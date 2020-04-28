@@ -429,13 +429,16 @@ class SITL():
             if not out and not err and alive != None:
                 break
 
-    def connection_string(self):
+    def connection_string(self, ip=None):
         '''returned string may be used to connect to simulated vehicle'''
         # these are magic numbers; ArduPilot listens on ports starting
         # at 5760+10*(instance-number)
+        
+        if (ip is None):
+            ip = "127.0.0.1"
         port = 5760
         port += 10 * self.instance
-        return 'tcp:127.0.0.1:' + str(port)
+        return "tcp:" + ip + ":" + str(port)
 
 def start_default(lat=None, lon=None):
     '''start a SITL session using sensible defaults.  This should be the simplest way to start a sitl session'''

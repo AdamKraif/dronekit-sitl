@@ -458,7 +458,7 @@ def start_default(lat=None, lon=None):
         exit(1)
     sitl_args = ['--model', 'quad', ]
     if lat is not None:
-        sitl_args.append('--home=%f,%f,0' % (lat,lon,))
+        sitl_args.append('--home=%f,%f,0,353' % (lat,lon,))
     sitl.launch(sitl_args, await_ready=True, restart=True)
     return sitl
 
